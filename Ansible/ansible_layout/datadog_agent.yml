@@ -1,0 +1,24 @@
+# This needs to be updated with the correct host information.  On the production machine I just put the IP
+# address of the server I want to install the Datadog agent on.
+- hosts: servers
+  tasks:
+    - name: Import the Datadog Agent role from the Datadog collection
+      # This is required to elevate to root.  Even though the user scot should be elevated, it doesn't work
+      # without this.
+      become: true
+      # The source for the playbook role is at https://github.com/DataDog/ansible-datadog
+      import_role:
+        name: datadog.dd.agent
+  vars:
+    # This variable was encrypted with ansible-vault.
+    datadog_api_key: !vault |
+          $ANSIBLE_VAULT;1.1;AES256
+          37376331356665656230623932396333333564383965633766323730633865663262376164353365
+          3365613333666538306632656633373835366664343430340a393538643735396632366633343361
+          34316636623366353531336131663666303038643063636238376530336439653432383834353733
+          3164633833633135620a386364383634386435323730613634656635623632663539333763386638
+          38393161626265343561383032623765613437383963343138663463343864343733313739653439
+          6433663063633432666134656561383065383566393538326534
+    datadog_site: "datadoghq.com"
+    # There is currently no container on the Ubuntu Server this is being delivered to, so it is commented
+    # datadog_apm_instrumentation_enabled: "all"

@@ -11,3 +11,6 @@
 # Built Visual Studio Code Extensions
 *.vsix
 .DS_Store
+
+*/secrets.yaml
+K8sManifests/rssfeedpuller/secrets.yaml

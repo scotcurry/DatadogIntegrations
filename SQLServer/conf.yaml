@@ -42,7 +42,7 @@ instances:
     ## of 0 to omit port from your connection string. This should allow SSBS to autodiscover the 
     ## correct database port. 
     #
-  - host: win2019serverdec,1433
+  - host: winserverdec,1433
 
     ## @param username - string - optional
     ## Username for the Datadog-SQL server check user. It will be ignored if using Windows authentication.

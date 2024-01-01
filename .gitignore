@@ -14,3 +14,4 @@
 
 */secrets.yaml
 K8sManifests/rssfeedpuller/secrets.yaml
+/.idea

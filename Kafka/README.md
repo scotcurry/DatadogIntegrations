@@ -39,7 +39,7 @@ Requirements
 
 ## Configure the service startup files
 
-### zookeeper.service (in /etc/systemd/service)
+### zookeeper.service (in /lib/systemd/service)
 ```
 [Unit]
 Requires=network.target remote-fs.target
@@ -56,7 +56,7 @@ Restart=on-abnormal
 WantedBy=multi-user.target
 ```
 
-### kafka.service (in /etc/systemd/service)
+### kafka.service (in /lib/systemd/service)
 ```
 [Unit]
 Requires=zookeeper.service

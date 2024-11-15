@@ -94,8 +94,15 @@ echo "Hello, Scot" | ~/kafka/bin/kafka-console-producer.sh --broker-list localho
 ```
 **Note** If you get NO_LEADER_AVAILABLE you probably didn't uncomment out the listener port.
 
+### Make sure connections can be made from non-localhost machines.
+Edit the server.properties file and update the listner line to use the host name
+```
+listeners=PLAINTEXT://ubuntu-postgres.curryware.org:9092
+```
+
+
 ## Troubleshooting - Kafka Setup
-- Ran into an issue where the server.log file in the logs folder said "Cluster ID doesn’t match stored clusterId in meta.properties."  That value is stored in the log folder (**NOT LOGS**) folder.  Rather than replace teh cluserID value in the meta.properties file just delete the line.  When the server restarted Kafka was working.
+- **NOTE:** Look in the Kafka logs folder.  Ran into an issue where the server.log file in the logs folder said "Cluster ID doesn’t match stored clusterId in meta.properties."  That value is stored in the log folder defined in the kafka services file (**NOT LOGS**) folder.  Rather than replace the clusterID value in the meta.properties file just delete the line.  When the server restarted Kafka was working.
 - Ran into an issue where I was trying to change the port in the service startup section and zookeeper stopped working.  Copied the code from above and zookeeper was working, but I got an error on the ruok statement and it says the command isn't on the whitelist.
 - To get zookeeper working again I add the statement 4lw.commands.whitelist=* to the zookeeper.properties file.
 
